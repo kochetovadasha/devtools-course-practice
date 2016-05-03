@@ -3,7 +3,7 @@
 [![Join the chat at https://gitter.im/UNN-VMK-Software/devtools-course-practice](https://badges.gitter.im/UNN-VMK-Software/devtools-course-practice.svg)](https://gitter.im/UNN-VMK-Software/devtools-course-practice?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![HTML][html-badge]][html]
 [![Build Status](https://travis-ci.org/UNN-VMK-Software/devtools-course-practice.svg?branch=master)](https://travis-ci.org/UNN-VMK-Software/devtools-course-practice)
-[![codecov.io](https://codecov.io/github/UNN-VMK-Software/devtools-course-practice/coverage.svg?branch=master)](https://codecov.io/github/UNN-VMK-Software/devtools-course-practice?branch=master)
+[![codecov](https://codecov.io/gh/UNN-VMK-Software/devtools-course-practice/branch/master/graph/badge.svg)](https://codecov.io/gh/UNN-VMK-Software/devtools-course-practice)
 <!-- [![Documentation](https://readthedocs.org/projects/devtools-course-practice/badge/?version=latest)](http://devtools-course-practice.readthedocs.org) -->
 
  - Нижегородский Государственный Университет им. Н.И. Лобачевского
