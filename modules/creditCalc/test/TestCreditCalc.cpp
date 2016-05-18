@@ -189,67 +189,67 @@ TEST(creditPerson, can_calc_cost_with_procents_than) {
 }
 
 TEST(creditPerson, can_set_finish_day_in_metod) {
-	// Arrange
-	CreditPerson example;
-	const int cost = 100;
-	int procent = 10;
-	int creditTime = 10;
-	int finday = 10;
-	int finmonth = 3;
-	int finyear = 2017;
+    // Arrange
+    CreditPerson example;
+    const int cost = 100;
+    int procent = 10;
+    int creditTime = 10;
+    int finday = 10;
+    int finmonth = 3;
+    int finyear = 2017;
 
-	// Act
-	example.setProcentByUser(procent);
-	example.setCost(cost);
-	example.setStartTimeByUser(10, 5, 2016);
-	example.setCreditTime(creditTime);
+    // Act
+    example.setProcentByUser(procent);
+    example.setCost(cost);
+    example.setStartTimeByUser(10, 5, 2016);
+    example.setCreditTime(creditTime);
 
-	example.performTheCalculation();
+    example.performTheCalculation();
 
-	// Assert
-	EXPECT_EQ(finday, example.getFinishDay());
+    // Assert
+    EXPECT_EQ(finday, example.getFinishDay());
 }
 
 TEST(creditPerson, can_set_finish_month_in_metod) {
-	// Arrange
-	CreditPerson example;
-	const int cost = 100;
-	int procent = 10;
-	int creditTime = 10;
-	int finday = 10;
-	int finmonth = 3;
-	int finyear = 2017;
+    // Arrange
+    CreditPerson example;
+    const int cost = 100;
+    int procent = 10;
+    int creditTime = 10;
+    int finday = 10;
+    int finmonth = 3;
+    int finyear = 2017;
 
-	// Act
-	example.setProcentByUser(procent);
-	example.setCost(cost);
-	example.setStartTimeByUser(10, 5, 2016);
-	example.setCreditTime(creditTime);
+    // Act
+    example.setProcentByUser(procent);
+    example.setCost(cost);
+    example.setStartTimeByUser(10, 5, 2016);
+    example.setCreditTime(creditTime);
 
-	example.performTheCalculation();
+    example.performTheCalculation();
 
-	// Assert
-	EXPECT_EQ(finmonth, example.getFinishMonth());
+    // Assert
+    EXPECT_EQ(finmonth, example.getFinishMonth());
 }
 
 TEST(creditPerson, can_set_finish_year_in_metod) {
-	// Arrange
-	CreditPerson example;
-	const int cost = 100;
-	int procent = 10;
-	int creditTime = 10;
-	int finday = 10;
-	int finmonth = 3;
-	int finyear = 2017;
+    // Arrange
+    CreditPerson example;
+    const int cost = 100;
+    int procent = 10;
+    int creditTime = 10;
+    int finday = 10;
+    int finmonth = 3;
+    int finyear = 2017;
 
-	// Act
-	example.setProcentByUser(procent);
-	example.setCost(cost);
-	example.setStartTimeByUser(10, 5, 2016);
-	example.setCreditTime(creditTime);
+    // Act
+    example.setProcentByUser(procent);
+    example.setCost(cost);
+    example.setStartTimeByUser(10, 5, 2016);
+    example.setCreditTime(creditTime);
 
-	example.performTheCalculation();
+    example.performTheCalculation();
 
-	// Assert
-	EXPECT_EQ(finyear, example.getFinishYear());
+    // Assert
+    EXPECT_EQ(finyear, example.getFinishYear());
 }
