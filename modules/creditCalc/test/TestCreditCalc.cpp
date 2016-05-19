@@ -5,18 +5,20 @@
 
 TEST(creditPerson, throw_then_procent_less_than_zero) {
     // Arrange
+	int procent = -30;
     CreditPerson example;
 
     // Act and Assert
-    EXPECT_ANY_THROW(example.setProcentByUser(-30));
+    EXPECT_ANY_THROW(example.setProcentByUser(procent));
 }
 
 TEST(creditPerson, throw_then_procent_more_than_100) {
     // Arrange
+	int procent = 1300;
     CreditPerson example;
 
     // Act and Assert
-    EXPECT_ANY_THROW(example.setProcentByUser(1300));
+    EXPECT_ANY_THROW(example.setProcentByUser(procent));
 }
 
 TEST(creditPerson, no_throw_then_procent_is_normal) {
