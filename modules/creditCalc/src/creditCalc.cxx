@@ -49,8 +49,7 @@ void CreditPerson::setCreditTime(const int timeImp) {
     creditTime = timeImp;
 }
 
-void CreditPerson::setCost(const double costImp)
-{
+void CreditPerson::setCost(const double costImp) {
     if (costImp <= 0) {
         throw std::invalid_argument("Invalide cost(cost must be more than 0)");
     } else {
@@ -78,7 +77,7 @@ void CreditPerson::paymentExecution(const double payImp) {
 void CreditPerson::setStartTimeByUser
     (const int dImp, const int mImp, const int yImp) {
     // Check
-    checkDay(dImp,mImp);
+    checkDay(dImp, mImp);
     checkMonth(mImp);
     checkYear(yImp);
     // Set
