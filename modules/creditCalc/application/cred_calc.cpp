@@ -1,7 +1,7 @@
 // Copyright 2016 Kochetova Dasha
 
-#include "include\credit_calculator.h"
-# include <string>
+#include <string>
+#include "include/credit_calculator.h"
 
 int main(int argc, const char** argv) {
     CreditCalculator app;
