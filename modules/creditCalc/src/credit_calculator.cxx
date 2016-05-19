@@ -16,9 +16,9 @@ void CreditCalculator::help(const char* appname, const char* message) {
         "<day> <month> <year>"
 
         "\n\nWhere arguments-<summa> and <procent>" +
-		"are double-precision numbers," +
+        "are double-precision numbers," +
         " <creditTime> in months and <day>,<month>," +
-		"<year>-date of your start of credit.";
+        "<year>-date of your start of credit.";
 }
 
 bool CreditCalculator::validateNumberOfArguments(int argc, const char** argv) {
@@ -34,9 +34,9 @@ bool CreditCalculator::validateNumberOfArguments(int argc, const char** argv) {
 
 double parseToDouble(const char* arg) {
     double value;
-    if (atof(arg) > 0){
+    if (atof(arg) > 0) {
         value = atof(arg);
-    } else{
+    } else {
         throw std::string("Wrong number format!");
     }
     return value;
@@ -44,7 +44,7 @@ double parseToDouble(const char* arg) {
 
 int parseToInt(const char* arg) {
     int value;
-    if (atoi(arg) > 0){
+    if (atoi(arg) > 0) {
         value = atoi(arg);
     } else {
         throw std::string("Wrong number format!");
@@ -85,7 +85,7 @@ std::string CreditCalculator::operator()(int argc, const char** argv) {
     int month = person.getFinishMonth();
     int year = person.getFinishYear();
     stream << "Your total amount due = " << balance
-		<< " , monthly payment = " << middle;
+        << " , monthly payment = " << middle;
     stream << "\nFinish day to Pay is " << day << "." << month << "." << year;
 
     message_ = stream.str();
