@@ -195,8 +195,6 @@ TEST(creditPerson, can_set_finish_day_in_metod) {
     int procent = 10;
     int creditTime = 10;
     int finday = 10;
-    int finmonth = 3;
-    int finyear = 2017;
 
     // Act
     example.setProcentByUser(procent);
@@ -216,9 +214,7 @@ TEST(creditPerson, can_set_finish_month_in_metod) {
     const int cost = 100;
     int procent = 10;
     int creditTime = 10;
-    int finday = 10;
     int finmonth = 3;
-    int finyear = 2017;
 
     // Act
     example.setProcentByUser(procent);
@@ -238,8 +234,6 @@ TEST(creditPerson, can_set_finish_year_in_metod) {
     const int cost = 100;
     int procent = 10;
     int creditTime = 10;
-    int finday = 10;
-    int finmonth = 3;
     int finyear = 2017;
 
     // Act
