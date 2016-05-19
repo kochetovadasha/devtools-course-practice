@@ -5,8 +5,7 @@
 
 #include <include/moments.h>
 
-class CreditPerson
-{
+class CreditPerson {
  public:
     // constructors
     CreditPerson();
@@ -24,7 +23,7 @@ class CreditPerson
     // math methods
     double newInstallment(const double installmentImp);
     double performTheCalculation();  // calculating price with procent
-    void setCost(const double costImp); // setCost
+    void setCost(const double costImp);  // setCost
 
  private:
     // variables
