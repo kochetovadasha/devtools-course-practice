@@ -5,7 +5,7 @@
 
 TEST(creditPerson, throw_then_procent_less_than_zero) {
     // Arrange
-	int procent = -30;
+    int procent = -30;
     CreditPerson example;
 
     // Act and Assert
@@ -14,7 +14,7 @@ TEST(creditPerson, throw_then_procent_less_than_zero) {
 
 TEST(creditPerson, throw_then_procent_more_than_100) {
     // Arrange
-	int procent = 1300;
+    int procent = 1300;
     CreditPerson example;
 
     // Act and Assert
