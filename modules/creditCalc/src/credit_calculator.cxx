@@ -15,16 +15,17 @@ void CreditCalculator::help(const char* appname, const char* message) {
         "  $ " + appname + " <summa> <procent> <creditTime> " +
         "<day> <month> <year>"
 
-        "\n\nWhere arguments-<summa> and <procent> are double-precision numbers," +
-        " <creditTime> in months and <day>,<month>,<year>-date of your start of credit.";
+        "\n\nWhere arguments-<summa> and <procent>" +
+		"are double-precision numbers," +
+        " <creditTime> in months and <day>,<month>," +
+		"<year>-date of your start of credit.";
 }
 
 bool CreditCalculator::validateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
         help(argv[0]);
         return false;
-    }
-    else if (argc != 7) {
+    } else if (argc != 7) {
         help(argv[0], "ERROR: Should be 6 arguments.\n\n");
         return false;
     }
@@ -33,7 +34,7 @@ bool CreditCalculator::validateNumberOfArguments(int argc, const char** argv) {
 
 double parseToDouble(const char* arg) {
     double value;
-    if (atof(arg) > 0) {
+    if (atof(arg) > 0){
         value = atof(arg);
     } else{
         throw std::string("Wrong number format!");
@@ -43,9 +44,9 @@ double parseToDouble(const char* arg) {
 
 int parseToInt(const char* arg) {
     int value;
-    if (atoi(arg) > 0) {
+    if (atoi(arg) > 0){
         value = atoi(arg);
-    }else{
+    } else {
         throw std::string("Wrong number format!");
     }
 
@@ -78,12 +79,13 @@ std::string CreditCalculator::operator()(int argc, const char** argv) {
 
     std::ostringstream stream;
     person.performTheCalculation();
-    int balance = (int)(person.getBalanceOfTheDebt());
+    int balance = static_cast<int>(person.getBalanceOfTheDebt());
     double middle = person.getBalanceOfMonth();
     int day = person.getFinishDay();
     int month = person.getFinishMonth();
     int year = person.getFinishYear();
-    stream << "Your total amount due = " << balance    << " , monthly payment = " << middle;
+    stream << "Your total amount due = " << balance
+		<< " , monthly payment = " << middle;
     stream << "\nFinish day to Pay is " << day << "." << month << "." << year;
 
     message_ = stream.str();
