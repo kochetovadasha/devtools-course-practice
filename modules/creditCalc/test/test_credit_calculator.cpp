@@ -8,14 +8,14 @@
 #include <functional>
 #include <iterator>
 
-#include "include\credit_calculator.h"
+#include "include/credit_calculator.h"
 
 using ::testing::internal::RE;
 using std::vector;
 using std::string;
 
 class CreditCalculatorTest : public ::testing::Test {
-protected:
+ protected:
     void Act(vector<string> args_) {
         vector<const char*> options;
 
@@ -34,7 +34,7 @@ protected:
         EXPECT_TRUE(RE::PartialMatch(output_, RE(expected)));
     }
 
-private:
+ private:
     CreditCalculator app_;
     string output_;
 };
