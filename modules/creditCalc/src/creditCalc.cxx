@@ -26,18 +26,18 @@ double CreditPerson::newInstallment(const double installmentImp) {
             return needToPay;
         } else {
             throw std::invalid_argument
-				("Invalide installment(must be more than 0)");
+                ("Invalide installment(must be more than 0)");
         }
 }
 
 double CreditPerson::performTheCalculation() {
     if (creditTime >= 12) {
         needToPay = cost+cost*procent*
-			(static_cast<double>(creditTime / 12));  // calc cost with
+            (static_cast<double>(creditTime / 12));  // calc cost with
     } else {
         if ( creditTime ) {
             needToPay = cost+cost*procent*
-				(static_cast<double>(creditTime / 12));
+                (static_cast<double>(creditTime / 12));
         }
     }
     middlePay = needToPay / creditTime;  // calc everemonth pay
@@ -98,16 +98,16 @@ void CreditPerson::setFinishTimeByUser(const int creditTimeImp) {
 }
 
 void CreditPerson::checkDay(int dayImp, int monthImp) {
-	if (monthImp % 2 == 1) {
-		if ((dayImp < 1) || (dayImp > 31)) {
-			throw std::invalid_argument("Invalid day");
-		} } else if (monthImp == 2) {
-			if ((dayImp < 1) || (dayImp > 28))
-				throw std::invalid_argument("Invalid day");
-		} else if (monthImp % 2 == 0) {
-			if ((dayImp < 1) || (dayImp > 30))
-				throw std::invalid_argument("Invalid day");
-		}
+    if (monthImp % 2 == 1) {
+        if ((dayImp < 1) || (dayImp > 31)) {
+            throw std::invalid_argument("Invalid day");
+        } } else if (monthImp == 2) {
+            if ((dayImp < 1) || (dayImp > 28))
+                throw std::invalid_argument("Invalid day");
+        } else if (monthImp % 2 == 0) {
+            if ((dayImp < 1) || (dayImp > 30))
+                throw std::invalid_argument("Invalid day");
+        }
 }
 
 void CreditPerson::checkMonth(int monthImp) {
