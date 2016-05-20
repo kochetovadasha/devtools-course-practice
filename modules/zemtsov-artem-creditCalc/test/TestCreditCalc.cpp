@@ -5,18 +5,20 @@
 
 TEST(creditPerson, throw_then_procent_less_than_zero) {
     // Arrange
+    int procent = -30;
     CreditPerson example;
 
     // Act and Assert
-    EXPECT_ANY_THROW(example.setProcentByUser(-30));
+    EXPECT_ANY_THROW(example.setProcentByUser(procent));
 }
 
 TEST(creditPerson, throw_then_procent_more_than_100) {
     // Arrange
+    int procent = 1300;
     CreditPerson example;
 
     // Act and Assert
-    EXPECT_ANY_THROW(example.setProcentByUser(1300));
+    EXPECT_ANY_THROW(example.setProcentByUser(procent));
 }
 
 TEST(creditPerson, no_throw_then_procent_is_normal) {
@@ -107,7 +109,7 @@ TEST(creditPerson, no_throw_then_try_set_normal_installment) {
     const int cost = 9999;
 
     // Act
-    example.discoverCost(cost);
+    example.setCost(cost);
 
     // Assert
     EXPECT_NO_THROW(example.newInstallment(newInstallment));
@@ -121,7 +123,7 @@ TEST(creditPerson, can_make_new_normal_installment) {
 
     // Act
     double needToPay;
-    example.discoverCost(exampleCost);
+    example.setCost(exampleCost);
     needToPay = example.newInstallment(newInstallment);
 
     // Assert
@@ -134,7 +136,7 @@ TEST(creditPerson, can_make_full_pay_installment) {
     const int exampleCost = 20000;
 
     // Act
-    example.discoverCost(exampleCost);
+    example.setCost(exampleCost);
     example.newInstallment(exampleCost);
 
     // Assert
@@ -156,7 +158,7 @@ TEST(creditPerson, can_get_balance_of_debt_and_dicovere_the_cost) {
     const int exampleCost = 20000;
 
     // Act
-    example.discoverCost(exampleCost);
+    example.setCost(exampleCost);
 
     // Assert
     EXPECT_EQ(exampleCost, example.getBalanceOfTheDebt() );
@@ -168,7 +170,7 @@ TEST(creditPerson, throw_then_discover_the_cost_less_or_equal_zero) {
 
     // Act and Assert
     for (int exampleCost =- 5; exampleCost <= 0; exampleCost++) {
-       EXPECT_ANY_THROW(example.discoverCost(exampleCost) );
+       EXPECT_ANY_THROW(example.setCost(exampleCost) );
     }
 }
 
@@ -180,10 +182,70 @@ TEST(creditPerson, can_calc_cost_with_procents_than) {
 
     // Act and Assert
     for (int i = 1; i <= 100; i++) {
-        example.discoverCost(cost);
+        example.setCost(cost);
         example.setFinishTimeByUser(i);
         example.setProcentByUser(procent);
         EXPECT_EQ(cost + cost * procent/100 * (static_cast<double>(i / 12)),
                 example.performTheCalculation() );
     }
+}
+
+TEST(creditPerson, can_set_finish_day_in_metod) {
+    // Arrange
+    CreditPerson example;
+    const int cost = 100;
+    int procent = 10;
+    int creditTime = 10;
+    int finday = 10;
+
+    // Act
+    example.setProcentByUser(procent);
+    example.setCost(cost);
+    example.setStartTimeByUser(10, 5, 2016);
+    example.setCreditTime(creditTime);
+
+    example.performTheCalculation();
+
+    // Assert
+    EXPECT_EQ(finday, example.getFinishDay());
+}
+
+TEST(creditPerson, can_set_finish_month_in_metod) {
+    // Arrange
+    CreditPerson example;
+    const int cost = 100;
+    int procent = 10;
+    int creditTime = 10;
+    int finmonth = 3;
+
+    // Act
+    example.setProcentByUser(procent);
+    example.setCost(cost);
+    example.setStartTimeByUser(10, 5, 2016);
+    example.setCreditTime(creditTime);
+
+    example.performTheCalculation();
+
+    // Assert
+    EXPECT_EQ(finmonth, example.getFinishMonth());
+}
+
+TEST(creditPerson, can_set_finish_year_in_metod) {
+    // Arrange
+    CreditPerson example;
+    const int cost = 100;
+    int procent = 10;
+    int creditTime = 10;
+    int finyear = 2017;
+
+    // Act
+    example.setProcentByUser(procent);
+    example.setCost(cost);
+    example.setStartTimeByUser(10, 5, 2016);
+    example.setCreditTime(creditTime);
+
+    example.performTheCalculation();
+
+    // Assert
+    EXPECT_EQ(finyear, example.getFinishYear());
 }

@@ -1,15 +1,11 @@
-#ifndef MODULES_ZEMTSOV_ARTEM_CREDITCALC_INCLUDE_CREDITCALC_H_
-#define MODULES_ZEMTSOV_ARTEM_CREDITCALC_INCLUDE_CREDITCALC_H_
+// Copyright 2016 Zemtsov Artem
 
-//  creditCalc.h
-//  firstAttempt
-//
-//  Created by артем on 22.04.16.
-//  Copyright © 2016 артем. All rights reserved.
-//
+#ifndef MODULES_CREDITCALC_INCLUDE_CREDITCALC_H_
+#define MODULES_CREDITCALC_INCLUDE_CREDITCALC_H_
+
 #include <include/moments.h>
 
-class CreditPerson{
+class CreditPerson {
  public:
     // constructors
     CreditPerson();
@@ -17,12 +13,17 @@ class CreditPerson{
     void setProcentByUser(const double procentImp);
     void setStartTimeByUser(const int dImp, const int mImp, const int yImp);
     void setFinishTimeByUser(const int creditTimeImp);
+    void setCreditTime(const int timeImp);
     // get
-    double getBalanceOfTheDebt() {return needToPay;}
+    double getBalanceOfTheDebt() { return needToPay; }
+    double getBalanceOfMonth() { return middlePay; }
+    int getFinishDay() { return finishDay.getDay(); }
+    int getFinishMonth() { return finishDay.getMonth(); }
+    int getFinishYear() { return finishDay.getYear(); }
     // math methods
     double newInstallment(const double installmentImp);
     double performTheCalculation();  // calculating price with procent
-    void discoverCost(const double costImp);  // setCost
+    void setCost(const double costImp);  // setCost
 
  private:
     // variables
@@ -35,22 +36,17 @@ class CreditPerson{
     double middlePay;
     // methods
     // set
-    void setStartTime(const int dayImp, const int monthImp, const int yearImp);
-    void setCreditTime(const int timeImp);
-    void setFinishDay(const int dayImp, const int monthImp, const int yearImp);
     void setEarlyFinish();
-    void setCost(const double costImp) { cost = costImp; needToPay = costImp; }
     // get
-    int getStartDay() {return startDay.getDay();}
-    int getStartMonth() {return startDay.getMonth() ;}
-    int getStartYear() {return startDay.getYear() ;}
+    int getStartDay() {  return startDay.getDay();   }
+    int getStartMonth() {  return startDay.getMonth();  }
+    int getStartYear() {  return startDay.getYear();  }
     // math methods
     void paymentExecution(const double payImp);
     // check
-    void checkDay(int dayImp);
+    void checkDay(int dayImp, int monthImp);
     void checkMonth(int monthImp);
     void checkYear(int yearImp);
 };
 
-#endif  //  MODULES_ZEMTSOV_ARTEM_CREDITCALC_INCLUDE_CREDITCALC_H_
-
+#endif  //  MODULES_CREDITCALC_INCLUDE_CREDITCALC_H_

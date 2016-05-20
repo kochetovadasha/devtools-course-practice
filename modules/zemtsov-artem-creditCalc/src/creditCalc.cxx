@@ -1,10 +1,4 @@
-//
-//  creditCalc.cpp
-//  firstAttempt
-//
-//  Created by артем on 22.04.16.
-//  Copyright © 2016 артем. All rights reserved.
-//
+// Copyright 2016 Zemtsov Artem
 
 #include <stdio.h>
 #include <stdexcept>
@@ -16,15 +10,6 @@ CreditPerson::CreditPerson() {
     cost = 0;
     yourEnter = 0;
     needToPay = 0;
-}
-void CreditPerson::setStartTime
-    (const int dayImp, const int monthImp, const int yearImp) {
-    startDay.setTime(dayImp, monthImp, yearImp);
-}
-
-void CreditPerson::setFinishDay
-    (const int dayImp, const int monthImp, const int yearImp) {
-    finishDay.setTime(dayImp, monthImp, yearImp);
 }
 
 void CreditPerson::setProcentByUser(const double procentImp) {
@@ -41,21 +26,22 @@ double CreditPerson::newInstallment(const double installmentImp) {
             return needToPay;
         } else {
             throw std::invalid_argument
-                                ("Invalide installment(must be more than 0)");
+                ("Invalide installment(must be more than 0)");
         }
 }
 
 double CreditPerson::performTheCalculation() {
     if (creditTime >= 12) {
         needToPay = cost+cost*procent*
-        (static_cast<double>(creditTime / 12));  // calc cost with
+            (static_cast<double>(creditTime / 12));  // calc cost with
     } else {
         if ( creditTime ) {
             needToPay = cost+cost*procent*
-            (static_cast<double>(creditTime/12));
+                (static_cast<double>(creditTime / 12));
         }
     }
-    middlePay = needToPay/creditTime;  // calc everemonth pay
+    middlePay = needToPay / creditTime;  // calc everemonth pay
+    setFinishTimeByUser(creditTime);
     return needToPay;
 }
 
@@ -63,11 +49,12 @@ void CreditPerson::setCreditTime(const int timeImp) {
     creditTime = timeImp;
 }
 
-void CreditPerson::discoverCost(const double costImp) {
+void CreditPerson::setCost(const double costImp) {
     if (costImp <= 0) {
         throw std::invalid_argument("Invalide cost(cost must be more than 0)");
     } else {
-        setCost(costImp);
+        cost = costImp;
+        needToPay = costImp;
     }
 }
 
@@ -86,31 +73,41 @@ void CreditPerson::paymentExecution(const double payImp) {
              }
         }
 }
+
 void CreditPerson::setStartTimeByUser
     (const int dImp, const int mImp, const int yImp) {
     // Check
-    checkDay(dImp);
+    checkDay(dImp, mImp);
     checkMonth(mImp);
     checkYear(yImp);
     // Set
-    setStartTime(dImp, mImp, yImp);
+    startDay.setTime(dImp, mImp, yImp);
 }
 
-void CreditPerson::setFinishTimeByUser
-            (const int creditTimeImp) {
+void CreditPerson::setFinishTimeByUser(const int creditTimeImp) {
     setCreditTime(creditTimeImp);
     if (creditTime < 1) {
         throw std::invalid_argument
-                    ("Invalide credit time (must be more than 0)");
+            ("Invalide credit time (must be more than 0)");
     } else {
-        setFinishDay(getStartDay(),
-            (startDay.getMonth() + creditTime) % 12,
-                     getStartYear() + creditTime / 12);
-            }
+        int day = getStartDay();
+        int month = (startDay.getMonth() + creditTime) % 12;
+        int year = getStartYear() + ((startDay.getMonth() + creditTime) / 12);
+        finishDay.setTime(day, month, year);
     }
-void CreditPerson::checkDay(int dayImp) {
-    if ( (dayImp < 1) || (dayImp > 31) )
-        throw std::invalid_argument("Invalid day");
+}
+
+void CreditPerson::checkDay(int dayImp, int monthImp) {
+    if (monthImp % 2 == 1) {
+        if ((dayImp < 1) || (dayImp > 31)) {
+            throw std::invalid_argument("Invalid day");
+        } } else if (monthImp == 2) {
+            if ((dayImp < 1) || (dayImp > 28))
+                throw std::invalid_argument("Invalid day");
+        } else if (monthImp % 2 == 0) {
+            if ((dayImp < 1) || (dayImp > 30))
+                throw std::invalid_argument("Invalid day");
+        }
 }
 
 void CreditPerson::checkMonth(int monthImp) {
